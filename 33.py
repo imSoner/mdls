@@ -32,7 +32,7 @@ class WeatherMod(loader.Module):
     }
 
     async def weathercitycmd(self, message: Message) -> None:
-        """Установить город по умолчанию для прогноза погоды"""
+        """Встановити місто за замовчуванням для прогнозу погоди"""
         if args := utils.get_args_raw(message):
             self.db.set(self.strings['name'], 'city', args)
         await utils.answer(message, f"<b>🏙 Ваше поточне місто: "
@@ -40,7 +40,7 @@ class WeatherMod(loader.Module):
         return
 
     async def weathercmd(self, message: Message) -> None:
-        """Текущий прогноз погоды по выбранному городу """
+        """Поточний прогноз погоди за обраним містом """
         city = utils.get_args_raw(message)
         if not city:
             city = self.db.get(self.strings['name'], 'city', "")
@@ -49,7 +49,7 @@ class WeatherMod(loader.Module):
         await utils.answer(message, f'<code>{n.join(req.text.splitlines()[:7])}</code>')
 
     async def weather_inline_handler(self, query: GeekInlineQuery) -> None:
-        """Поиск города"""
+        """Пошук міста"""
         args = query.args
         if not args:
             args = self.db.get(self.strings['name'], 'city', "")
