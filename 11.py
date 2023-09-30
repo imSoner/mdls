@@ -1,29 +1,20 @@
-__version__ = (1, 0, 0)
+__version__ = (1, 0, 1)
 
 import contextlib
 
-"""
-    █▀▄▀█ █▀█ █▀█ █ █▀ █ █ █▀▄▀█ █▀▄▀█ █▀▀ █▀█
-    █ ▀ █ █▄█ █▀▄ █ ▄█ █▄█ █ ▀ █ █ ▀ █ ██▄ █▀▄
-    Copyright 2022 t.me/morisummermods
-    Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-"""
-# meta developer: @morisummermods
-# meta banner: https://i.imgur.com/H1vPM6U.jpg
 
 from telethon.tl.types import Message
 import requests
 import logging
 import re
 
-from .. import loader, utils  # noqa
+from .. import loader, utils
 
 logger = logging.getLogger(__name__)
 
 
 @loader.tds
 class ChatGPT(loader.Module):
-    """ChatGPT AI API interaction"""
 
     strings = {
         "name": "ChatGPT",
@@ -238,7 +229,7 @@ class ChatGPT(loader.Module):
         return resp["choices"][0]["message"]["content"]
 
     @loader.command(
-        ru_doc="<вопрос> - Спитати",
+        ru_doc="<питання> - Спитати",
         it_doc="<domanda> - Fai una domanda",
         fr_doc="<question> - Posez une question",
         de_doc="<frage> - Stelle eine Frage",
