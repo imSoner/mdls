@@ -44,7 +44,7 @@ class WeatherMod(loader.Module):
         city = utils.get_args_raw(message)
         if not city:
             city = self.db.get(self.strings['name'], 'city', "")
-        lang = 'ru' if city and city[0].lower() in rus else 'en'
+        lang = 'uk' if city and city[0].lower() in rus else 'en'
         req = requests.get(f"https://wttr.in/{city}?m&T&lang={lang}")
         await utils.answer(message, f'<code>{n.join(req.text.splitlines()[:7])}</code>')
 
