@@ -35,7 +35,7 @@ class WeatherMod(loader.Module):
         """Установить город по умолчанию для прогноза погоды"""
         if args := utils.get_args_raw(message):
             self.db.set(self.strings['name'], 'city', args)
-        await utils.answer(message, f"<b>🏙 Ваш текущий город: "
+        await utils.answer(message, f"<b>🏙 Ваше поточне місто: "
                                     f"<code>{self.db.get(self.strings['name'], 'city', '🚫 Не зазначено')}</code></b>")
         return
 
@@ -66,7 +66,7 @@ class WeatherMod(loader.Module):
                     description=req.text,
                     # thumb_url="https://i.ytimg.com/vi/IMLwb8DIksk/maxresdefault.jpg",
                     input_message_content=InputTextMessageContent(
-                        f'<code>{n.join(requests.get(f"https://wttr.in/{args}?m&T&lang={lang}").text.splitlines()[:7])}</code>',
+                        f'<code>{n.join(requests.get(f"https://wttr.in/{args}?m&T&lang=uk").text.splitlines()[:7])}</code>',
                         parse_mode="HTML",
                     ),
                 )
