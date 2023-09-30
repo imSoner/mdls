@@ -56,7 +56,7 @@ class WeatherMod(loader.Module):
         if not args:
             return
         # req = requests.get(f"https://wttr.in/{quote_plus(args)}?format=j1").json()
-        lang = 'ru' if args and args[0].lower() in rus else 'en'
+        lang = 'uk' if args and args[0].lower() in rus else 'en'
         req = requests.get(f"https://wttr.in/{quote_plus(args)}?format=3")
         await query.answer(
             [
